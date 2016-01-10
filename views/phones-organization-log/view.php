@@ -1,0 +1,41 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\PhonesOrganizationLog */
+
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Phones Organization Logs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="phones-organization-log-view">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->log_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->log_id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'log_id',
+            'phone_organization_id',
+            'user_id',
+            'datetime',
+            'name',
+            'number',
+            'person_id',
+        ],
+    ]) ?>
+
+</div>
