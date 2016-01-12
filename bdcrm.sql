@@ -668,7 +668,7 @@ ALTER TABLE `user_project_assignements`
 ALTER TABLE `contacts`
   ADD CONSTRAINT `contactOrganization` FOREIGN KEY (`organization_id`) REFERENCES `organizations` (`organization_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `contactPerson` FOREIGN KEY (`person_id`) REFERENCES `persons` (`person_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `contactUser` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `contactUser` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `emails_organization`
@@ -681,7 +681,7 @@ ALTER TABLE `emails_organization`
 --
 ALTER TABLE `emails_organization_log`
   ADD CONSTRAINT `email_organization_id` FOREIGN KEY (`email_organization_id`) REFERENCES `emails_organization` (`email_organization_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `emails_person`
@@ -694,14 +694,14 @@ ALTER TABLE `emails_person`
 --
 ALTER TABLE `emails_person_log`
   ADD CONSTRAINT `emailsPersonLogEmailsPerson` FOREIGN KEY (`email_person_id`) REFERENCES `emails_person` (`email_person_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `emailsPersonLogUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `emailsPersonLogUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `organizations_log`
 --
 ALTER TABLE `organizations_log`
   ADD CONSTRAINT `OrganizationsLogOrganizations` FOREIGN KEY (`organization_id`) REFERENCES `organizations` (`organization_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `OrganizationsLogUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `OrganizationsLogUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `persons`
@@ -714,7 +714,7 @@ ALTER TABLE `persons`
 --
 ALTER TABLE `persons_log`
   ADD CONSTRAINT `PersonsLogPersons` FOREIGN KEY (`person_id`) REFERENCES `persons` (`person_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `PersonsLogUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `PersonsLogUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `phones_organization`
@@ -727,7 +727,7 @@ ALTER TABLE `phones_organization`
 --
 ALTER TABLE `phones_organization_log`
   ADD CONSTRAINT `phonesOrganizationLogPhonesOrganization` FOREIGN KEY (`phone_organization_id`) REFERENCES `phones_organization` (`phone_organization_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `phonesOrganizationLogUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `phonesOrganizationLogUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `phones_person`
@@ -740,14 +740,14 @@ ALTER TABLE `phones_person`
 --
 ALTER TABLE `phones_person_log`
   ADD CONSTRAINT `PhonesPersonLogPhonesPerson` FOREIGN KEY (`phone_person_id`) REFERENCES `phones_person` (`phone_person_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `PhonesPersonLogUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `PhonesPersonLogUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ograniczenia dla tabeli `planned_contacts`
 --
 ALTER TABLE `planned_contacts`
   ADD CONSTRAINT `plannedFromContact` FOREIGN KEY (`resulted_from_contact_id`) REFERENCES `contacts` (`contact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `plannedUser` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `plannedUser` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `plannetToContact` FOREIGN KEY (`resulted_in_contact_id`) REFERENCES `contacts` (`contact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -786,7 +786,7 @@ ALTER TABLE `token`
 --
 ALTER TABLE `user_project_assignements`
   ADD CONSTRAINT `UserProjectAssignementsProject` FOREIGN KEY (`project_id`) REFERENCES `projects` (`project_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `UserProjectAssignementsUsers` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `UserProjectAssignementsUsers` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
