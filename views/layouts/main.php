@@ -27,27 +27,33 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'BD CRM',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Organizations', 'url' => ['/organizations/index']],
             ['label' => 'Persons', 'url' => ['/persons/index']],
             ['label' => 'Projects', 'url' => ['/projects/index']],
-            ['label' => 'Contacts', 'url' => ['/contacts/index']],
+            ['label' => 'Contacts', 'url' => ['/contacts/index']]
+        ],
+    ]);
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => [
+            ['label' => 'Profile', 'url' =>['user/settings/profile'], 'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ?
                 ['label' => 'Sign in', 'url' => ['/user/security/login']] :
                 ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/user/security/logout'],
                     'linkOptions' => ['data-method' => 'post']],
             ['label' => 'Register', 'url' => ['/user/registration/register'], 'visible' => Yii::$app->user->isGuest]
-        ],
+        ]
     ]);
     NavBar::end();
     ?>
