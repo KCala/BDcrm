@@ -40,7 +40,8 @@ AppAsset::register($this);
             ['label' => 'Organizations', 'url' => ['/organizations/index']],
             ['label' => 'Persons', 'url' => ['/persons/index']],
             ['label' => 'Projects', 'url' => ['/projects/index']],
-            ['label' => 'Contacts', 'url' => ['/contacts/index']]
+            ['label' => 'Contacts', 'url' => ['/contacts/index']],
+            ['label' => 'Contacts Statistics', 'url' => ['/contacts/stats']]
         ],
     ]);
     echo Nav::widget([

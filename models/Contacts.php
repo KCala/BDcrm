@@ -104,4 +104,6 @@ class Contacts extends \yii\db\ActiveRecord
     {
         return $this->hasMany(PlannedContacts::className(), ['resulted_in_contact_id' => 'contact_id']);
     }
+
+    public $Count;
 }

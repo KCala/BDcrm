@@ -7,30 +7,29 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ContactsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Contacts';
+$this->title = 'Contacts statistics by company';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="contacts-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Contacts', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        'summary' => '',
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'contact_id',
-            'datetime',
-            'topic',
-            'user_id',
             'organization_id',
+            'organization.name',
+            'Count',
+
+//            'contact_id',
+//            'datetime',
+//            'user_id',
+//            'organization_id',
 //            'person_id',
+            // 'topic',
             // 'notes:ntext',
             // 'result',
             // 'result_description:ntext',

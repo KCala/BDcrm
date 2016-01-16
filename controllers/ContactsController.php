@@ -2,9 +2,12 @@
 
 namespace app\controllers;
 
+use app\models\Organizations;
+use app\models\Persons;
 use Yii;
 use app\models\Contacts;
 use app\models\ContactsSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -101,6 +104,21 @@ class ContactsController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionStats()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Contacts::find()
+                ->joinWith('organization')
+                ->select(['contacts.*','count(*) as Count'])->groupBy('organization_id'),
+
+            'pagination' => ['pageSize' => 20]
+        ]);
+
+        return $this->render('stats', [
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**
