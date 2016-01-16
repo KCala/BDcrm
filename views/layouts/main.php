@@ -47,7 +47,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Profile', 'url' =>['user/settings/profile'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Manage users', 'url' =>['user/admin/index'], 'visible' => Yii::$app->user->identity->username == 'admin'],
+            ['label' => 'Manage users', 'url' =>['user/admin/index'], 'visible' => !Yii::$app->user->isGuest &&
+                Yii::$app->user->identity->username == 'admin'],
             Yii::$app->user->isGuest ?
                 ['label' => 'Sign in', 'url' => ['/user/security/login']] :
                 ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')',

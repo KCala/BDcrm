@@ -1,14 +1,24 @@
 <?php
 
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Organizations */
+/* @var $searchModel app\models\PersonsSearch */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Organizations', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$personsDataProvider = new \yii\data\ActiveDataProvider([
+    'query' => \app\models\Persons::find()->
+    where(['organization_id'=>Yii::$app->getRequest()->getQueryParam('id')]),
+    'pagination' => ['pageSize' => 20]
+])
+
+
 ?>
 <div class="organizations-view">
 
@@ -39,5 +49,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'state',
         ],
     ]) ?>
+
+
+    <h2>Persons in this organization</h2>
+    <?= GridView::widget([
+        'dataProvider' => $personsDataProvider,
+        'columns' => [
+            'person_id',
+            'firstname',
+            'lastname',
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
 
 </div>
